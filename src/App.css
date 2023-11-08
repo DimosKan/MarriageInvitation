@@ -1,38 +1,220 @@
-.App {
+@font-face {
+  font-family: 'AC-Cyb';
+  src: url('./font/AC-Cyberella_Unicode.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  caret-color: transparent;
+  font-family: 'AC-Cyb',cursive;
+  line-height: 1;
+  font-size:200%;
+  letter-spacing:2px;
+  font-weight: bold;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-color: #F3EFE0;
+  position: relative;
+
+}
+
+.phonenum{
+  color:brown;
+}
+
+.and{
+  color:brown;
+}
+a{
+  text-decoration:none;
+  color: black;
+  cursor: text;
+}
+.centered{
+  text-align:center;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px; 
+  background-image: url('./iconlib/pp.png'); 
+  background-size: cover;
+}
+
+body::before {
+  z-index: 999;
+  left: 0;
+  top: 0;
+  transform: scaleX(1) scaleY(1);
+}
+
+body::after {
+  z-index: 999;
+  right: 0;
+  bottom: 0;
+  transform: scaleX(1) scaleY(-1);
+  transform: rotate(180deg);
+}
+
+.react-calendar{
+  background-color: rgba(243, 243, 243, 0.5)!important;
+  width:500px!important;
+}
+#gg{
+  text-align:left!important;
+}
+
+#and{
+  text-align:center!important;
+}
+
+#kd{
+  text-align:right!important;
+
+}
+
+.column {
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: rgba(243, 243, 243, 0.5);
+  box-shadow: 5px 10px rgba(0, 0, 0, 0.4);
+  font-size: xx-large !important;
+  opacity: 0; 
+}
+
+.dates img {
+  max-width: 100%;
+}
+
+.countdown-container {
   text-align: center;
+  font-size: 24px;
+  margin: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.countdown-item {
+  display: inline-block;
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.countdown-value {
+  font-size: 36px;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.app-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.left-column {
+  animation: slideInLeft 0.5s forwards;
 }
 
-@keyframes App-logo-spin {
+.center-column {
+  animation: slideInRight 0.5s forwards; 
+  animation-delay: 1s; 
+}
+
+.right-column {
+  animation: slideInLeft 0.5s forwards; 
+  animation-delay: 2s; 
+}
+
+@keyframes slideInLeft {
   from {
-    transform: rotate(0deg);
+    transform: translateX(-100%);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(0);
+    opacity: 1;
   }
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr; /* Only one column on mobile */
+    background-size: 125% 150%;
+    background-position: center;
+  }
+
+  .column {
+    width: 80%;
+  }
+
+  body {
+    text-align: center;
+  }
+
+  body::after {
+    padding-left: 20px;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .center-column {
+    animation: slideInLeft 0.5s forwards;
+    animation-delay: 1s;
+    order: 1;
+  }
+
+  .right-column {
+    animation: slideInRight 0.5s forwards;
+    animation-delay: 2s;
+    order: 3;
+  }
+
+  .left-column {
+    order: 2;
+  }
+
+  .information h5{
+    font-size:23px;
+  }
+}
+#cap{
+  font-size: 170%;
+  color:brown;
+}
+

@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import "./App.css";
+import Maps from "./components/Map.jsx";
+import "leaflet/dist/leaflet.css";
+import Information from "./components/Information.jsx";
+import Dates from "./components/Dates.jsx";
+import WeddingCountdown from "./components/WeddingCountdown.jsx";
 
-function App() {
+const App = () => {
+
+  useEffect(() => {
+    const handleContextmenu = e => {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextmenu)
+    return function cleanup() {
+      document.removeEventListener('contextmenu', handleContextmenu)
+    }
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="column left-column">
+        <Maps />
+      </div>
+      <div className="column center-column">
+        <Information />
+        <WeddingCountdown />
+      </div>
+      <div className="column right-column">
+        <Dates />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
